@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IDILSA | Comercializadora y Servicios</title>
 
-<link href="muro.jpeg" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -70,12 +70,16 @@ nav a{
 nav a::after{
   content:"";
   position:absolute;
-  left:0;bottom:-4px;
-  width:0;height:2px;
+  left:0;
+  bottom:-4px;
+  width:0;
+  height:2px;
   background:var(--azul);
   transition:.3s;
 }
-nav a:hover::after{width:100%;}
+nav a:hover::after{
+  width:100%;
+}
 
 /* ===== HERO ===== */
 .hero{
@@ -86,7 +90,7 @@ nav a:hover::after{width:100%;}
   text-align:center;
   padding:70px 16px;
   background:
-    linear-gradient(rgba(0,51,102,.85),rgba(0,51,102,.85)),
+    linear-gradient(rgba(0,51,102,.85), rgba(0,51,102,.85)),
     url("muro.jpeg") center/cover no-repeat;
   color:white;
 }
@@ -228,8 +232,14 @@ footer{
 
 /* ===== ANIM ===== */
 @keyframes fadeUp{
-  from{opacity:0;transform:translateY(30px)}
-  to{opacity:1;transform:translateY(0)}
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 </style>
 </head>
