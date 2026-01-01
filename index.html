@@ -16,7 +16,16 @@
   --texto:#222;
 }
 
-*{margin:0;padding:0;box-sizing:border-box}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html, body{
+  width:100%;
+  overflow-x:hidden;
+}
 
 body{
   font-family:'Montserrat',sans-serif;
@@ -27,52 +36,50 @@ body{
 /* ===== HEADER ===== */
 header{
   background:var(--blanco);
+  padding:14px 18px;
   display:flex;
-  justify-content:space-between;
+  flex-direction:column;
   align-items:center;
-  padding:18px 35px;
   box-shadow:0 4px 20px rgba(0,0,0,.08);
   position:sticky;
   top:0;
   z-index:1000;
 }
 
-header img{height:48px}
+header img{
+  height:46px;
+  margin-bottom:10px;
+}
+
+/* ===== NAV ===== */
+nav{
+  width:100%;
+}
 
 nav ul{
   list-style:none;
   display:flex;
-  gap:26px;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:14px;
 }
 
 nav a{
   text-decoration:none;
   font-weight:600;
+  font-size:.95rem;
   color:var(--azul);
-  position:relative;
+  white-space:nowrap;
 }
-
-nav a::after{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:-6px;
-  width:0;
-  height:3px;
-  background:var(--azul-claro);
-  transition:.3s;
-}
-
-nav a:hover::after{width:100%}
 
 /* ===== HERO ===== */
 .hero{
-  min-height:75vh;
+  min-height:60vh;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
-  padding:90px 20px;
+  padding:60px 16px;
   background:
     linear-gradient(rgba(0,51,102,.85),rgba(0,51,102,.85)),
     url("https://images.unsplash.com/photo-1581092160607-ee22621dd758") center/cover no-repeat;
@@ -80,55 +87,50 @@ nav a:hover::after{width:100%}
 }
 
 .hero h1{
-  font-size:2.6rem;
+  font-size:2rem;
   font-weight:800;
 }
 
 .hero p{
-  max-width:650px;
-  margin:18px auto 0;
-  font-size:1.1rem;
+  margin-top:14px;
+  font-size:1rem;
+  max-width:520px;
 }
 
 /* ===== STATS ===== */
 .stats{
-  max-width:1100px;
-  margin:70px auto 0;
-  padding:0 20px;
+  padding:50px 16px 0;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:25px;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:16px;
 }
 
 .stat{
   background:white;
-  padding:30px 20px;
-  border-radius:16px;
+  padding:20px 10px;
+  border-radius:14px;
   text-align:center;
-  box-shadow:0 12px 30px rgba(0,0,0,.08);
+  box-shadow:0 10px 24px rgba(0,0,0,.08);
 }
 
 .stat h3{
-  font-size:2.2rem;
+  font-size:1.6rem;
   color:var(--azul);
 }
 
 .stat span{
-  font-size:.95rem;
+  font-size:.8rem;
   color:#555;
 }
 
 /* ===== SECCIONES ===== */
 .sections{
-  padding:90px 20px;
+  padding:60px 16px;
 }
 
 .grid{
-  max-width:1200px;
-  margin:auto;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:35px;
+  gap:26px;
 }
 
 .card{
@@ -137,30 +139,28 @@ nav a:hover::after{width:100%}
   overflow:hidden;
   text-decoration:none;
   color:inherit;
-  box-shadow:0 18px 40px rgba(0,0,0,.1);
-  transition:.4s;
+  box-shadow:0 16px 32px rgba(0,0,0,.1);
 }
-
-.card:hover{transform:translateY(-8px)}
 
 .card img{
   width:100%;
-  height:260px;
+  height:220px;
   object-fit:contain;
   background:#f0f2f5;
 }
 
 .card-content{
-  padding:26px;
+  padding:22px;
 }
 
 .card h2{
   color:var(--azul);
-  margin-bottom:12px;
+  font-size:1.3rem;
+  margin-bottom:10px;
 }
 
 .card p{
-  font-size:.95rem;
+  font-size:.9rem;
   color:#555;
 }
 
@@ -169,15 +169,44 @@ footer{
   background:var(--azul);
   color:white;
   text-align:center;
-  padding:28px;
-  margin-top:80px;
-  font-size:.9rem;
+  padding:24px 14px;
+  font-size:.85rem;
 }
 
-/* ===== RESPONSIVE ===== */
-@media(max-width:768px){
-  .hero h1{font-size:2rem}
-  nav ul{gap:16px}
+/* ===== DESKTOP ===== */
+@media(min-width:768px){
+  header{
+    flex-direction:row;
+    justify-content:space-between;
+    padding:18px 35px;
+  }
+
+  header img{
+    margin-bottom:0;
+  }
+
+  nav ul{
+    gap:26px;
+  }
+
+  .hero{
+    min-height:75vh;
+  }
+
+  .hero h1{
+    font-size:2.6rem;
+  }
+
+  .stats{
+    max-width:1100px;
+    margin:auto;
+  }
+
+  .grid{
+    max-width:1200px;
+    margin:auto;
+    grid-template-columns:repeat(3,1fr);
+  }
 }
 </style>
 </head>
@@ -188,6 +217,7 @@ footer{
   <a href="https://www.idilsalubricacion.com/" target="_blank">
     <img src="LogoIdilsa.jpeg" alt="IDILSA">
   </a>
+
   <nav>
     <ul>
       <li><a href="https://nostrosidilsa.netlify.app/">Nosotros</a></li>
@@ -207,10 +237,10 @@ footer{
 
 <section class="stats">
   <div class="stat"><h3>20+</h3><span>Años de experiencia</span></div>
-  <div class="stat"><h3>150+</h3><span>Clientes atendidos</span></div>
-  <div class="stat"><h3>24/7</h3><span>Soporte técnico</span></div>
+  <div class="stat"><h3>150+</h3><span>Clientes</span></div>
+  <div class="stat"><h3>24/7</h3><span>Soporte</span></div>
   <div class="stat"><h3>2</h3><span>Sucursales</span></div>
-  <div class="stat"><h3>100%</h3><span>Compromiso operativo</span></div>
+  <div class="stat"><h3>100%</h3><span>Compromiso</span></div>
 </section>
 
 <section class="sections">
@@ -228,7 +258,7 @@ footer{
       <img src="maquinados.jpeg" alt="Maquinados">
       <div class="card-content">
         <h2>Maquinados</h2>
-        <p>Procesos de alta precisión con tecnología especializada.</p>
+        <p>Procesos de alta precisión y calidad garantizada.</p>
       </div>
     </a>
 
@@ -236,7 +266,7 @@ footer{
       <img src="lubricacíon.jpeg" alt="Lubricación">
       <div class="card-content">
         <h2>Lubricación</h2>
-        <p>Soluciones que extienden la vida útil de tu maquinaria.</p>
+        <p>Protección y rendimiento para maquinaria industrial.</p>
       </div>
     </a>
 
@@ -249,3 +279,4 @@ footer{
 
 </body>
 </html>
+
