@@ -22,7 +22,7 @@
   box-sizing:border-box;
 }
 
-html, body{
+html,body{
   width:100%;
   overflow-x:hidden;
 }
@@ -40,7 +40,7 @@ header{
   display:flex;
   flex-direction:column;
   align-items:center;
-  box-shadow:0 4px 20px rgba(0,0,0,.08);
+  box-shadow:0 6px 20px rgba(0,0,0,.08);
   position:sticky;
   top:0;
   z-index:1000;
@@ -52,16 +52,12 @@ header img{
 }
 
 /* ===== NAV ===== */
-nav{
-  width:100%;
-}
-
 nav ul{
   list-style:none;
   display:flex;
   flex-wrap:wrap;
   justify-content:center;
-  gap:14px;
+  gap:16px;
 }
 
 nav a{
@@ -69,12 +65,11 @@ nav a{
   font-weight:600;
   font-size:.95rem;
   color:var(--azul);
-  white-space:nowrap;
 }
 
 /* ===== HERO ===== */
 .hero{
-  min-height:60vh;
+  min-height:65vh;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -87,34 +82,43 @@ nav a{
 }
 
 .hero h1{
-  font-size:2rem;
+  font-size:2.1rem;
   font-weight:800;
+  animation:fadeDown .8s ease;
 }
 
 .hero p{
   margin-top:14px;
-  font-size:1rem;
   max-width:520px;
+  animation:fadeUp .8s ease .2s both;
 }
 
 /* ===== STATS ===== */
 .stats{
-  padding:50px 16px 0;
+  padding:60px 16px 0;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-  gap:16px;
+  gap:18px;
 }
 
 .stat{
   background:white;
-  padding:20px 10px;
-  border-radius:14px;
+  padding:22px 10px;
+  border-radius:16px;
   text-align:center;
-  box-shadow:0 10px 24px rgba(0,0,0,.08);
+  box-shadow:0 14px 28px rgba(0,0,0,.1);
+  opacity:0;
+  transform:translateY(30px);
+  transition:.6s ease;
+}
+
+.stat.visible{
+  opacity:1;
+  transform:translateY(0);
 }
 
 .stat h3{
-  font-size:1.6rem;
+  font-size:1.7rem;
   color:var(--azul);
 }
 
@@ -125,12 +129,12 @@ nav a{
 
 /* ===== SECCIONES ===== */
 .sections{
-  padding:60px 16px;
+  padding:70px 16px;
 }
 
 .grid{
   display:grid;
-  gap:26px;
+  gap:30px;
 }
 
 .card{
@@ -139,7 +143,19 @@ nav a{
   overflow:hidden;
   text-decoration:none;
   color:inherit;
-  box-shadow:0 16px 32px rgba(0,0,0,.1);
+  box-shadow:0 20px 40px rgba(0,0,0,.12);
+  opacity:0;
+  transform:translateY(40px);
+  transition:.6s ease;
+}
+
+.card.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.card:hover{
+  transform:translateY(-6px);
 }
 
 .card img{
@@ -150,12 +166,11 @@ nav a{
 }
 
 .card-content{
-  padding:22px;
+  padding:26px;
 }
 
 .card h2{
   color:var(--azul);
-  font-size:1.3rem;
   margin-bottom:10px;
 }
 
@@ -169,8 +184,19 @@ footer{
   background:var(--azul);
   color:white;
   text-align:center;
-  padding:24px 14px;
+  padding:26px 14px;
   font-size:.85rem;
+}
+
+/* ===== ANIMACIONES ===== */
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(20px)}
+  to{opacity:1; transform:translateY(0)}
+}
+
+@keyframes fadeDown{
+  from{opacity:0; transform:translateY(-20px)}
+  to{opacity:1; transform:translateY(0)}
 }
 
 /* ===== DESKTOP ===== */
@@ -185,16 +211,8 @@ footer{
     margin-bottom:0;
   }
 
-  nav ul{
-    gap:26px;
-  }
-
-  .hero{
-    min-height:75vh;
-  }
-
   .hero h1{
-    font-size:2.6rem;
+    font-size:2.7rem;
   }
 
   .stats{
@@ -236,37 +254,37 @@ footer{
 </section>
 
 <section class="stats">
-  <div class="stat"><h3>20+</h3><span>Años de experiencia</span></div>
-  <div class="stat"><h3>150+</h3><span>Clientes</span></div>
-  <div class="stat"><h3>24/7</h3><span>Soporte</span></div>
-  <div class="stat"><h3>2</h3><span>Sucursales</span></div>
-  <div class="stat"><h3>100%</h3><span>Compromiso</span></div>
+  <div class="stat"><h3 data-count="20">0</h3><span>Años de experiencia</span></div>
+  <div class="stat"><h3 data-count="150">0</h3><span>Clientes</span></div>
+  <div class="stat"><h3 data-count="24">0</h3><span>Soporte 24/7</span></div>
+  <div class="stat"><h3 data-count="2">0</h3><span>Sucursales</span></div>
+  <div class="stat"><h3 data-count="100">0</h3><span>Compromiso (%)</span></div>
 </section>
 
 <section class="sections">
   <div class="grid">
 
-    <a href="https://idilsacomercializadoras.netlify.app/" class="card">
-      <img src="33736.png" alt="Comercializadora">
+    <a href="#" class="card">
+      <img src="33736.png">
       <div class="card-content">
         <h2>Comercializadora</h2>
-        <p>Distribución de productos industriales con atención personalizada.</p>
+        <p>Distribución industrial con soluciones confiables.</p>
       </div>
     </a>
 
-    <a href="https://sites.google.com/view/idilsa-inicio-parte1/p%C3%A1gina-principal" class="card">
-      <img src="33737.png" alt="Maquinados">
+    <a href="#" class="card">
+      <img src="33737.png">
       <div class="card-content">
         <h2>Maquinados</h2>
-        <p>Procesos de alta precisión y calidad garantizada.</p>
+        <p>Alta precisión en procesos industriales.</p>
       </div>
     </a>
 
-    <a href="https://sites.google.com/view/idilsa-incio-parte-2/p%C3%A1gina-principal" class="card">
-      <img src="33738.png" alt="Lubricación">
+    <a href="#" class="card">
+      <img src="33738.png">
       <div class="card-content">
         <h2>Lubricación</h2>
-        <p>Protección y rendimiento para maquinaria industrial.</p>
+        <p>Rendimiento y protección para maquinaria.</p>
       </div>
     </a>
 
@@ -276,6 +294,40 @@ footer{
 <footer>
   © 2025 IDILSA. Todos los derechos reservados.
 </footer>
+
+<script>
+/* ===== OBSERVER ===== */
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("visible");
+      if(entry.target.querySelector("h3[data-count]")){
+        animateCount(entry.target.querySelector("h3"));
+      }
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.3});
+
+document.querySelectorAll(".stat, .card").forEach(el=>observer.observe(el));
+
+/* ===== CONTADORES ===== */
+function animateCount(el){
+  const target = +el.dataset.count;
+  let current = 0;
+  const increment = target / 60;
+
+  const counter = setInterval(()=>{
+    current += increment;
+    if(current >= target){
+      el.textContent = target + (target === 24 ? "/7" : target === 100 ? "%" : "+");
+      clearInterval(counter);
+    }else{
+      el.textContent = Math.floor(current);
+    }
+  },20);
+}
+</script>
 
 </body>
 </html>
