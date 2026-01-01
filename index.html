@@ -1,231 +1,251 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>Comercializadora y Servicios</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #003366; /* Azul rey para el texto */
-            background-color: #ffffff; /* Fondo blanco */
-            text-align: center;
-            overflow-x: hidden; /* Evitar el desplazamiento horizontal */
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh; /* Asegura que el body ocupe toda la altura de la pantalla */
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IDILSA | Comercializadora y Servicios</title>
 
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            padding: 0 10px; /* Añadido para mejor ajuste en pantallas pequeñas */
-        }
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
-        .header {
-            background-color: #003366; /* Azul rey */
-            padding: 40px 20px; /* Ajustado para pantalla más pequeña */
-            color: white;
-        }
+<style>
+:root{
+  --azul:#003366;
+  --azul-claro:#00509e;
+  --blanco:#ffffff;
+  --gris:#f4f6f9;
+  --texto:#222;
+}
 
-        .header h1 {
-            font-size: 2em; /* Reducido el tamaño para pantallas pequeñas */
-            margin: 10px 0;
-        }
+*{margin:0;padding:0;box-sizing:border-box}
 
-        .logo {
-            width: 50%; /* Ajustado para pantallas pequeñas */
-            margin: 20px auto;
-            animation: pulse 1s infinite alternate; /* Animación de pulso */
-        }
+body{
+  font-family:'Montserrat',sans-serif;
+  background:var(--gris);
+  color:var(--texto);
+}
 
-        nav {
-            background: #00509E; /* Azul más claro */
-            padding: 10px 0; /* Ajustado para pantallas pequeñas */
-        }
+/* ===== HEADER ===== */
+header{
+  background:var(--blanco);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 35px;
+  box-shadow:0 4px 20px rgba(0,0,0,.08);
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
 
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex; /* Cambio a flex para mantener los elementos en una fila */
-            justify-content: center; /* Centrado horizontal de los elementos */
-            margin: 0;
-        }
+header img{height:48px}
 
-        nav ul li {
-            margin: 0 15px; /* Espaciado entre los elementos de navegación */
-        }
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:26px;
+}
 
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
-            font-size: 1.1em; /* Ajustado para mejorar legibilidad */
-        }
+nav a{
+  text-decoration:none;
+  font-weight:600;
+  color:var(--azul);
+  position:relative;
+}
 
-        nav ul li a:hover {
-            color: #ffcc00; /* Color amarillo al pasar el ratón */
-        }
+nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0;
+  height:3px;
+  background:var(--azul-claro);
+  transition:.3s;
+}
 
-        .content {
-            padding: 15px;
-            background: #f0f0f0; /* Fondo gris claro para el contenido */
-            margin: 20px 0;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 0.5s ease-in forwards;
-        }
+nav a:hover::after{width:100%}
 
-        .content h2 {
-            color: #003366; /* Azul rey para los títulos */
-            font-size: 1.5em; /* Ajustado para pantallas pequeñas */
-        }
+/* ===== HERO ===== */
+.hero{
+  min-height:75vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:90px 20px;
+  background:
+    linear-gradient(rgba(0,51,102,.85),rgba(0,51,102,.85)),
+    url("https://images.unsplash.com/photo-1581092160607-ee22621dd758") center/cover no-repeat;
+  color:white;
+}
 
-        .content img {
-            width: 80%; /* Aumentado para que ocupe más espacio */
-            max-width: 400px; /* Máximo ancho para imágenes */
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            transition: transform 0.3s; /* Transición para animación de escala */
-        }
+.hero h1{
+  font-size:2.6rem;
+  font-weight:800;
+}
 
-        .content img:hover {
-            transform: scale(1.05); /* Efecto de escala al pasar el ratón */
-        }
+.hero p{
+  max-width:650px;
+  margin:18px auto 0;
+  font-size:1.1rem;
+}
 
-        .footer {
-            background: #003366; /* Azul rey */
-            color: white;
-            text-align: center;
-            padding: 15px 0;
-            margin-top: 20px;
-            border-radius: 0 0 8px 8px;
-        }
+/* ===== STATS ===== */
+.stats{
+  max-width:1100px;
+  margin:70px auto 0;
+  padding:0 20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+}
 
-        /* Animaciones */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+.stat{
+  background:white;
+  padding:30px 20px;
+  border-radius:16px;
+  text-align:center;
+  box-shadow:0 12px 30px rgba(0,0,0,.08);
+}
 
-        @keyframes pulse {
-            from { transform: scale(1); }
-            to { transform: scale(1.05); }
-        }
+.stat h3{
+  font-size:2.2rem;
+  color:var(--azul);
+}
 
-        @keyframes slideIn {
-            from { transform: translateY(-20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
+.stat span{
+  font-size:.95rem;
+  color:#555;
+}
 
-        .fade-in {
-            animation: slideIn 0.5s ease-in forwards;
-        }
+/* ===== SECCIONES ===== */
+.sections{
+  padding:90px 20px;
+}
 
-        /* Media Queries para mejorar la visualización en dispositivos móviles */
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 1.8em; /* Ajustar título */
-            }
+.grid{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:35px;
+}
 
-            .logo {
-                width: 60%; /* Ajustado para que la imagen del logo no ocupe tanto */
-            }
+.card{
+  background:white;
+  border-radius:18px;
+  overflow:hidden;
+  text-decoration:none;
+  color:inherit;
+  box-shadow:0 18px 40px rgba(0,0,0,.1);
+  transition:.4s;
+}
 
-            nav ul li {
-                margin: 0 10px; /* Márgenes más pequeños */
-            }
+.card:hover{transform:translateY(-8px)}
 
-            nav ul li a {
-                font-size: 1.2em; /* Aumento del tamaño de fuente para facilitar lectura */
-            }
+.card img{
+  width:100%;
+  height:260px;
+  object-fit:contain;
+  background:#f0f2f5;
+}
 
-            .content img {
-                width: 90%; /* Aumento del tamaño de la imagen para pantallas pequeñas */
-                max-width: 350px; /* Máximo ancho de las imágenes */
-            }
+.card-content{
+  padding:26px;
+}
 
-            .footer {
-                font-size: 1em; /* Ajustar el tamaño de texto en el pie de página */
-            }
-        }
+.card h2{
+  color:var(--azul);
+  margin-bottom:12px;
+}
 
-        @media (max-width: 480px) {
-            .header h1 {
-                font-size: 1.6em; /* Título aún más pequeño para pantallas más pequeñas */
-            }
+.card p{
+  font-size:.95rem;
+  color:#555;
+}
 
-            .logo {
-                width: 70%; /* Logo más pequeño para teléfonos más pequeños */
-            }
+/* ===== FOOTER ===== */
+footer{
+  background:var(--azul);
+  color:white;
+  text-align:center;
+  padding:28px;
+  margin-top:80px;
+  font-size:.9rem;
+}
 
-            .content h2 {
-                font-size: 1.3em; /* Ajustar tamaño de los títulos */
-            }
-
-            .footer {
-                font-size: 0.9em; /* Ajustar el tamaño de texto en el pie de página */
-            }
-        }
-    </style>
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  .hero h1{font-size:2rem}
+  nav ul{gap:16px}
+}
+</style>
 </head>
 
 <body>
 
-<div class="container">
-    <div class="header">
-        <!-- Enlace agregado para abrir la página de Lubricación al hacer clic en el logo -->
-        <a href="https://www.idilsalubricacion.com/" target="_blank">
-            <img src="LogoIdilsa.jpeg" alt="Logo" class="logo">
-        </a>
-        <h1>Comercializadora y Servicios</h1>
-    </div>
-    
-    <nav>
-        <ul>
-            <li><a href="https://nostrosidilsa.netlify.app/" class="fade-in">NOSOTROS</a></li>
-            <li><a href="https://ubicacionidilsa.netlify.app/" class="fade-in">UBICACIÓN</a></li>
-            <li><a href="https://redessocialesidilsa.netlify.app/" class="fade-in">REDES</a></li>
-            <li><a href="https://preguntasidilsa.netlify.app/" class="fade-in">FAQS</a></li>
-        </ul>
-    </nav>
+<header>
+  <a href="https://www.idilsalubricacion.com/" target="_blank">
+    <img src="LogoIdilsa.jpeg" alt="IDILSA">
+  </a>
+  <nav>
+    <ul>
+      <li><a href="https://nostrosidilsa.netlify.app/">Nosotros</a></li>
+      <li><a href="https://ubicacionidilsa.netlify.app/">Ubicación</a></li>
+      <li><a href="https://redessocialesidilsa.netlify.app/">Redes</a></li>
+      <li><a href="https://preguntasidilsa.netlify.app/">FAQs</a></li>
+    </ul>
+  </nav>
+</header>
 
-    <div class="content fade-in" id="comercializadora">
+<section class="hero">
+  <div>
+    <h1>Comercializadora y Servicios</h1>
+    <p>Soluciones industriales confiables con respaldo técnico y enfoque profesional.</p>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="stat"><h3>20+</h3><span>Años de experiencia</span></div>
+  <div class="stat"><h3>150+</h3><span>Clientes atendidos</span></div>
+  <div class="stat"><h3>24/7</h3><span>Soporte técnico</span></div>
+  <div class="stat"><h3>2</h3><span>Sucursales</span></div>
+  <div class="stat"><h3>100%</h3><span>Compromiso operativo</span></div>
+</section>
+
+<section class="sections">
+  <div class="grid">
+
+    <a href="https://idilsacomercializadoras.netlify.app/" class="card">
+      <img src="comercializadora.jpeg" alt="Comercializadora">
+      <div class="card-content">
         <h2>Comercializadora</h2>
-        <!-- Enlace actualizado -->
-        <a href="https://idilsacomercializadoras.netlify.app/">
-            <img src="comercializadora.jpeg" alt="Comercializadora">
-        </a>
-        <p>Soluciones personalizadas para tus necesidades industriales.</p>
-    </div>
+        <p>Distribución de productos industriales con atención personalizada.</p>
+      </div>
+    </a>
 
-    <div class="content fade-in" id="maquinados">
+    <a href="https://sites.google.com/view/idilsa-inicio-parte1/p%C3%A1gina-principal" class="card">
+      <img src="maquinados.jpeg" alt="Maquinados">
+      <div class="card-content">
         <h2>Maquinados</h2>
-        <!-- Enlace actualizado -->
-        <a href="https://sites.google.com/view/idilsa-inicio-parte1/p%C3%A1gina-principal">
-            <img src="maquinados.jpeg" alt="Maquinados">
-        </a>
-        <p>Precisión y calidad en cada trabajo realizado.</p>
-    </div>
+        <p>Procesos de alta precisión con tecnología especializada.</p>
+      </div>
+    </a>
 
-    <div class="content fade-in" id="lubricacion">
+    <a href="https://sites.google.com/view/idilsa-incio-parte-2/p%C3%A1gina-principal" class="card">
+      <img src="lubricacíon.jpeg" alt="Lubricación">
+      <div class="card-content">
         <h2>Lubricación</h2>
-        <!-- Enlace actualizado -->
-        <a href="https://sites.google.com/view/idilsa-incio-parte-2/p%C3%A1gina-principal">
-            <img src="lubricacíon.jpeg" alt="Lubricación">
-        </a>
-        <p>Productos de alta calidad para el mantenimiento de tu maquinaria.</p>
-    </div>
+        <p>Soluciones que extienden la vida útil de tu maquinaria.</p>
+      </div>
+    </a>
 
-    <div class="footer">
-        <p>© 2025 IDILSA. Todos los derechos reservados.</p>
-    </div>
-</div>
+  </div>
+</section>
+
+<footer>
+  © 2025 IDILSA. Todos los derechos reservados.
+</footer>
 
 </body>
 </html>
